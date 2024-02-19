@@ -1,0 +1,29 @@
+# read
+file = open('data.txt', 'r')
+line = file.readline() # reads a single line
+print(line)
+line = file.readline()
+print(line)
+file.close()
+
+with open('data.txt', 'r') as file: # reads the whole file
+  text = file.read()
+  print(text)
+
+# write
+file = open('newdata.txt', 'w')
+file.write('123\n')
+file.close()
+
+with open('newdata.txt', 'w') as file:
+  file.write('12345\n')
+  file.close()
+
+# append
+file = open('newdata.txt', 'a')
+file.write('xyz\n')
+file.close()
+
+with open('newdata.txt', 'a') as file:
+  file.write('xyz\n')
+  file.close()
