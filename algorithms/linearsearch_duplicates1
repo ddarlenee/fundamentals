@@ -1,0 +1,11 @@
+# linear search (duplicates-find first occurence)
+def linear_search(A, target):
+  for i in range(len(A)):
+    if A[i] == target: # found
+      return i
+  return -1 # not found
+
+# main
+data = [1, 2, 5, 2, 8, 8]
+print(linear_search(data, 1)) # success
+print(linear_search(data, 4)) # failure
