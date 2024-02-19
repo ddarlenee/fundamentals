@@ -1,0 +1,15 @@
+# linear search (duplicates-find all occurences)
+def linear_search(A, target):
+  results = []
+  for i in range(len(A)):
+      if A[i] == target: # found
+        results.append(i)
+  if results != []:
+    return results
+  else:
+    return -1 # not found
+
+# main
+data = [1, 2, 5, 2, 8, 8]
+print(linear_search(data, 2)) # success return [1, 3]
+print(linear_search(data, 7)) # failure return -1 / not found
