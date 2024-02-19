@@ -1,0 +1,12 @@
+# linear search (while loop)
+def linear_search(A, target):
+  i = 0
+  while i < len(A):
+    if A[i] == target:
+      return i
+    i += 1
+  return -1
+# main
+data = [1, 4, 7, 19, 26]
+print(linear_search(data, 19)) # found
+print(linear_search(data, 8)) # not found
