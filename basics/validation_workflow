@@ -1,0 +1,90 @@
+# data validation techniques
+// presence check
+// length check
+// data type check
+// format check
+// range check
+// existence check
+// check digit
+# nric validation (w/o check digit)
+while True:
+  nrics = ['T0412345A', 'T0623456B', 'T0534567C']
+  nric = input("Enter your NRIC: ")
+  if len(nric) == 0: # presence check
+    print('Please enter your NRIC')
+    continue
+  elif len(nric) != 9: # length check
+    print('NRIC should contain 9 characters')
+    continue
+  elif not (nric[0].isalpha() and nric[-1].isalpha() and nric[1:-1].isdigit()): # format check
+    print('Format of NRIC is wrong')
+    continue
+  elif not (4 <= int(nric[2]) <= 6): # range check
+    print('Birth year is invalid')
+    continue
+  elif nric not in nrics: # existence / membership check
+    print('You are not a member of the school')
+    continue
+  else:
+    print(nric + ' is valid')
+    break
+
+# check digit validation
+def generate_check_alphabet(nric): # S1234567A
+  # initialise weights and check alphabets
+  weights = [2, 7, 6, 5, 4, 3, 2]
+  checks_st = ['J', 'Z', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A']
+  checks_fg = ['X', 'W', 'U', 'T', 'R', 'Q', 'P', 'N', 'M', 'L', 'K']
+
+  #0=J, 1=Z, 2=I, 3=H, 4=G, 5=F, 6=E, 7=D, 8=C, 9=B, 10=A
+  #0=X, 1=W, 2=U, 3=T, 4=R, 5=Q, 6=P, 7=N, 8=M, 9=L, 10=K
+
+  # sum of products
+  # nric = S1234567
+  # nric[1] * weights[0] +
+  # nric[2] * weights[1] +
+  # nric[3] * weights[2] +
+  # nric[4] * weights[3] +
+  # nric[5] * weights[4] +
+  # nric[6] * weights[5] +
+  # nric[7] * weights[6]
+
+  total = 0
+  for i in range(len(weights)):
+    total += int(nric[i+1]) * weights[i]
+
+  # cater for series T or G
+  if nric[0] == 'T' or nric[0] == 'G':
+    total += 4
+
+  # modulo 11
+  remainder = total % 11
+
+  # return check alphabet
+  if nric[0] == 'S' or nric[0] == 'T':
+    return checks_st[remainder]
+  else: # F or G series
+    return checks_fg[remainder]
+
+
+def is_valid_nric(nric):
+  # check if last input letter is the check alphabet generated
+  if nric[-1] == generate_check_alphabet(nric):
+    return True
+  else:
+    return False
+  # return nric[-1] == generate_check_alphabet(nric)
+
+
+# main
+#snric = input("Enter NRIC: ") # S1234567A (False) S1234567D (True)
+#print(is_valid_nric(snric))
+
+print(is_valid_nric('S1234567A')) # return False
+print(is_valid_nric('S1234567D')) # return True
+print(is_valid_nric('T1234567A')) # return False
+print(is_valid_nric('T1234567J')) # return True
+print(is_valid_nric('F1234567A')) # return False
+print(is_valid_nric('F1234567N')) # return True
+print(is_valid_nric('G1234567A')) # return False
+print(is_valid_nric('G1234567X')) # return True
