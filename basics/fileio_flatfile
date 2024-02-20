@@ -26,4 +26,3 @@ file.close()
 
 with open('newdata.txt', 'a') as file:
   file.write('xyz\n')
-  file.close()
