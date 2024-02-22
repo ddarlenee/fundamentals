@@ -1,0 +1,23 @@
+# concatenate 
+word1 = 'hello'
+word2 = 'world'
+conc_word = word1 + ' ' + word2
+print(conc_word) # hello world
+
+# length
+print(len(conc_word))
+
+# indexing and slicing
+print(word1[0])
+print(word2[0:3])
+
+# format
+word1.upper() 
+print(word1) # HELLO
+print('BYE'.lower()) # bye
+
+# split
+wordlist = conc_word.split() # ['hello', 'world']
+
+# remove whitespace
+print('    computing ') # 'computing'
