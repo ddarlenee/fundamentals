@@ -1,0 +1,69 @@
+# hash table
+def hash(key):
+  return key % N
+
+def insert(key, value):
+  index = hash(key)
+  if hash_table[index] == -1: # available
+    hash_table[index] = value # no collision
+  else: # collision
+    i = (index + 1) % N # linear probing
+    while hash_table[i] != -1: # find next free slot
+      i = (i + 1) % N
+    hash_table[i] = value # insert collided record
+
+def search(key, target):
+  index = hash(key)
+  if hash_table[index] == -1:
+    return "Record not found"
+  elif hash_table[index] != target: # collided record
+    i = (index + 1) % N
+    while hash_table[i] != -1:
+      if hash_table[i] == target:
+        return "Found in collided records"
+      i = (i + 1) % N
+    return "Not found in collided records"
+  else: # non-collided record
+    return hash_table[index]
+
+def update(key, new_value):
+  # search, if found update else error
+  result = search(key, target)
+  if result == "Record not found":
+    return result
+  elif result == "Found in collided records":
+    return "Cannot update collided record"
+  else:
+    index = hash(key)
+    hash_table[index] = new_value
+    return "Record updated successfully"
+
+def delete(key):
+  # search, if found delete else error
+  result = search(key, None)
+  if result == "Record not found":
+    return result
+  elif result == "Found in collided records":
+    return "Cannot delete collided record"
+  else:
+    index = hash(key)
+    hash_table[index] = -1
+    return "Record deleted successfully"
+
+# main
+N = 10
+hash_table = [-1 for i in range(N)]
+print(hash_table)
+#insert(1234, 'Tom')
+records = {1234: 'Tom', 651: 'Mary', 238: 'Ali'}
+for key, value in records.items():
+  insert(key, value)
+print(hash_table)
+insert(7654, 'Alex')
+insert(999, 'MrPang')
+insert(9, 'MsChen')
+print(hash_table)
+print(search(3, 'Peter')) # totally does not exist
+print(search(7654, 'Alex')) # collided record
+print(search(44, 'Zoe')) # does not exist in collided records
+print(search(1234, 'Tom')) # original record
