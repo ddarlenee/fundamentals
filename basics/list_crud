@@ -12,7 +12,7 @@ fruit_list.insert(1, "grape")
 # Adding elements using list concatenation
 fruit_list += ["kiwi", "pineapple"]
 
-print(fruit_list)
+print(fruit_list) # ['apple', 'grape', 'banana', 'orange', 'kiwi', 'pineapple']
 
 # Access individual elements using indexing
 print(fruit_list[0])    # prints "apple"
@@ -33,7 +33,7 @@ print(fruit_list)
 del fruit_list[0]   # removes "mango"
 
 # Remove an element by value using remove()
-fruit_list.remove("banana")
+fruit_list.remove("peach")
 
 # Remove and return the last element using pop()
 last_element = fruit_list.pop()
