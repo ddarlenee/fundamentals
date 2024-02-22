@@ -1,5 +1,6 @@
 # Strengthening the Fundamentals
 Term 1 Assessment - Code for a collection of videos covering most of the topics below:
+
 Basics
 - conditional statements (if, else, elif)
 - loops (for, while)
