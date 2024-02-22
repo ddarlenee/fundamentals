@@ -1,0 +1,87 @@
+# linked list
+class Node:
+    # Contains data + address of next node
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+
+class OrderedList:
+    def __init__(self):
+        self.head = None
+
+    def is_empty(self):
+        return self.head is None
+
+    def size(self):
+        current = self.head
+        count = 0
+        while current:
+            count += 1
+            current = current.next
+        return count
+
+    def search(self, data):
+        current = self.head
+        while current and current.data <= data: # will stop when the target excceeds data, won't check all numbers
+            if current.data == data:
+                return True
+            current = current.next
+        return False
+
+    def add(self, data):
+        new_node = Node(data)
+        if self.is_empty() or self.head.data > data: #check if list is empty
+            new_node.next = self.head #next node = None
+            self.head = new_node #self.head will point to next node
+        else: #if list is not empty
+            current = self.head # current = value of data
+            while current.next and current.next.data < data:
+              # to find where to insert itself
+              # first is to ensure it is not at the end of list
+                current = current.next
+            new_node.next = current.next # once found its position it points to next node
+            current.next = new_node # previous node points to added node
+
+    def remove(self, data):
+        if not self.is_empty(): # checks if list is not empty
+            if self.head.data == data: #checks if the item is the first node
+                self.head = self.head.next #head will be the second node
+                return 'First node deleted'
+            else:
+                current = self.head
+                while current.next and current.next.data != data:
+                    current = current.next
+                if current.next and current.next.data == data:
+                    current.next = current.next.next #skips over the deleted data
+                    return f'{data} deleted'
+
+        else:
+            return 'Cannot delete from empty list'
+
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.data, end=' ')
+            current = current.next
+        print()
+
+ordered_list = OrderedList()
+
+# add elements to the list
+ordered_list.add(5) # [5:none]
+ordered_list.add(1) # [1:5,5:none]
+ordered_list.add(3) # [1:3,3:5,5:,none]
+ordered_list.add(7)
+ordered_list.add(2)
+
+# print the list
+ordered_list.print_list()  # Output: 1 2 3 5 7
+
+# check if an element is in the list
+print(ordered_list.search(3))  # Output: True
+print(ordered_list.search(6))  # Output: False
+
+# remove an element from the list
+ordered_list.remove(3)
+ordered_list.print_list()  # Output: 1 2 5 7
+print(ordered_list.size())
