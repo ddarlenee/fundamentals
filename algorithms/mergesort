@@ -1,0 +1,33 @@
+# merge sort (linearithmic) O(n lg n) average case theta (n lg n)
+def merge_sort(A):
+    if len(A) <= 1:
+        return A
+
+    mid = len(A) // 2
+    left_half = A[:mid]
+    right_half = A[mid:]
+
+    left_half = merge_sort(left_half)
+    right_half = merge_sort(right_half)
+
+    return merge(left_half, right_half)
+
+def merge(left_half, right_half):
+    i = j = 0
+    merged_list = []
+    while i < len(left_half) and j < len(right_half):
+        if left_half[i] < right_half[j]: # compare the corresponding position of the left and right half eg. compare 1st index of left w right
+            merged_list.append(left_half[i])
+            i += 1
+        else:
+            merged_list.append(right_half[j])
+            j += 1
+
+    merged_list += left_half[i:]
+    merged_list += right_half[j:]
+
+    return merged_list
+
+# main
+data = [4, 7, 1, 5, 2, 8, 3]
+print(merge_sort(data))
