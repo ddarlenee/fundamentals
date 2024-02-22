@@ -11,3 +11,12 @@ while True:  # infinite loop
     count += 1
     if count >= 5:
         break  # breaks out of the loop when count reaches 5
+
+# finding factorial with a while loop
+n = int(input("Enter a number: "))
+count = 1
+factorial = 1
+while count <= n:
+    factorial *= count
+    count += 1
+print(factorial)
