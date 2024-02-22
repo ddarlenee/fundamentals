@@ -1,0 +1,30 @@
+# queue - using dynamic array
+queue = []
+# insert to end: append
+# delete from front: remove
+
+def enqueue(data):
+  queue.append(data)
+
+def dequeue():
+  if is_empty():
+    return "Queue empty"
+  else:
+    return queue.pop(0)
+
+def is_empty():
+  return len(queue) == 0 # or queue == []
+
+def size():
+  return len(queue)
+
+# main
+enqueue(1)
+enqueue(2)
+enqueue(3)
+print(queue)
+print(dequeue())
+print(dequeue())
+print(dequeue())
+print(dequeue())
+print(queue)
