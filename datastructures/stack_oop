@@ -1,0 +1,56 @@
+# stack - using OOP
+class Stack:
+
+  def __init__(self): # encapsulation
+    self.data = []
+    self.top = -1 # assume/take -1 to be invalid index
+
+  def is_empty(self):
+    return self.top == -1
+
+  def push(self, value): # insert
+    self.top = 0
+    self.data.insert(0, value)
+    print(value, "inserted")
+
+  def pop(self): # delete
+    if self.is_empty():
+      print("Cannot delete from empty stack")
+      return -1 # signify error
+    else:
+      value = self.data[self.top]
+      del self.data[self.top]
+      #print(value, "deleted")
+      if len(self.data) == 0:
+        self.top = -1
+      return value
+
+  def peek(self): # return top item without removing it
+    if self.is_empty():
+      return "Empty stack"
+    else:
+      return self.data[self.top]
+
+  def display(self):
+    if self.is_empty():
+      print("Empty stack")
+    else:
+      print("Contents: ", end='')
+      for item in self.data:
+        print(item, end=' ')
+      print()
+
+# main
+stack = Stack()
+stack.push(35)
+stack.push(88)
+stack.push(19)
+#print(stack.data, stack.top)
+stack.display()
+stack.pop()
+stack.display()
+print(stack.peek())
+stack.pop()
+stack.pop()
+stack.pop()
+stack.display()
