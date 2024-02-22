@@ -1,0 +1,17 @@
+# binary search (logarithmic) O(lg n) (recursive)
+def binary_search(A, target, low, high):
+  if low > high:
+    return "not found"
+  mid = (low+high)//2
+  if A[mid] == target:
+    return mid
+  elif A[mid] < target:
+    return binary_search(A, target, mid+1, high)
+  else:
+    return binary_search(A, target, low, mid-1)
+
+
+# main
+data = [1, 2, 3, 5, 6, 7, 9, 10]
+print(binary_search(data, 7, 0, len(data))) # success return 5
+print(binary_search(data, 8, 0, len(data))) # failure return not found
