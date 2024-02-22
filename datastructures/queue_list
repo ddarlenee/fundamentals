@@ -1,0 +1,61 @@
+# queue - using first principles and front and rear (using First In First Out FIFO data structure)
+N = 6
+queue = [None for i in range(N)] # queue can hold N-1 items
+front = -1 # index where next item is to be deleted
+rear = 0 # index where next item is to be inserted
+
+def enqueue(item):
+  global rear, front
+  if is_full():
+    print("Queue full")
+  else: # rear < N - 1
+    queue[rear] = item
+    rear = (rear + 1) % N
+    print(item, "inserted")
+    if is_empty(): # update front when empty queue
+      front = (front + 1) % N
+
+def dequeue():
+  global front, rear
+  if is_empty():
+    return "Queue empty"
+  else:
+    item = queue[front]
+    queue[front] = None
+    front = (front + 1) % N
+    if rear == front: # last item, reset
+      front = -1
+      rear = 0
+    return str(item) + " deleted"
+
+def is_full():
+  return size() == N - 1
+
+def is_empty():
+  return front == -1
+
+def size():
+  if is_empty():
+    return 0
+  elif front < rear:
+    return rear - front
+  else: # wraparound
+    return N - (front - rear)
+
+# main
+print(queue, size())
+enqueue(1)
+enqueue(2)
+enqueue(3)
+enqueue(4)
+enqueue(5)
+enqueue(6)
+print(queue, size())
+print(dequeue(), size())
+print(dequeue(), size())
+print(dequeue(), size())
+print(queue, size())
+print(dequeue(), size())
+print(dequeue(), size())
+print(dequeue(), size())
+print(queue, size())
