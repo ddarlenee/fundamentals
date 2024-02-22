@@ -1,0 +1,38 @@
+# quicksort (with list comprehension) O(n^2) average case theta(n lg n) -> set a pivot and see which data are more and which data are less
+def quicksort(A): # theta(n lg n)
+    if len(A) <= 1: # terminating case
+        return A
+    pivot = A[len(A) // 2]
+    left = [x for x in A if x < pivot] # list comprehension
+    middle = [x for x in A if x == pivot]
+    right = [x for x in A if x > pivot]
+    return quicksort(left) + middle + quicksort(right)
+
+# main
+# if not sorted(data)
+data = [4, 7, 1, 5, 2, 8, 3]
+print(quicksort(data))
+
+# quicksort (without list comprehension)
+def quicksort(A):
+    if len(A) <= 1:
+        return A
+
+    pivot = A[len(A) // 2]
+    left = []
+    middle = []
+    right = []
+
+    for element in A:
+        if element < pivot:
+            left.append(element)
+        elif element == pivot:
+            middle.append(element)
+        else:
+            right.append(element)
+
+    return quicksort(left) + middle + quicksort(right)
+
+# main
+data = [4, 7, 1, 5, 2, 8, 3]
+print(quicksort(data))
