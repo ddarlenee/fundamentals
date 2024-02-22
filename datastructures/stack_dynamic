@@ -1,0 +1,26 @@
+# stack - using dynamic array
+stack = []
+
+def push(data): # no need to check if full
+  stack.append(data)
+
+def pop():
+  if is_empty():
+    return "Stack empty"
+  else:
+    item = stack.pop()
+    return str(item) + " deleted"
+
+def is_empty():
+  return len(stack) == 0 # stack == []
+
+# main
+push(1)
+push(2)
+push(3)
+print(stack)
+print(pop())
+print(pop())
+print(pop())
+print(pop())
+print(stack)
