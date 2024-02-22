@@ -1,0 +1,47 @@
+# stack - using first principles and top (using Last In First Out LIFO data structure)
+N = 5
+stack = [None for i in range(N)]
+top = -1
+
+def push(item):
+  global top
+  if is_full():
+    print("Stack full")
+  else: # top < N - 1
+    top += 1
+    stack[top] = item
+    print(item, "inserted")
+
+def pop():
+  global top
+  if is_empty():
+    return "Stack empty"
+  else:
+    item = stack[top]
+    stack[top] = None
+    top -= 1
+    return str(item) + " deleted"
+
+def is_full():
+  return top == N - 1
+
+def is_empty():
+  return top == -1
+
+def size():
+  return top + 1
+
+# main
+push(1)
+push(2)
+push(3)
+push(4)
+push(5)
+push(6)
+print(pop())
+print(pop())
+print(pop())
+print(pop())
+print(pop())
+print(pop())
+print(size())
