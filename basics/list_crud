@@ -1,0 +1,42 @@
+# Create a new empty list
+fruit_list = []
+
+# Add elements to the list using append()
+fruit_list.append("apple")
+fruit_list.append("banana")
+fruit_list.append("orange")
+
+# Add an element at a specific position using insert()
+fruit_list.insert(1, "grape")
+
+# Adding elements using list concatenation
+fruit_list += ["kiwi", "pineapple"]
+
+print(fruit_list)
+
+# Access individual elements using indexing
+print(fruit_list[0])    # prints "apple"
+print(fruit_list[-1])   # prints "pineapple"
+
+# Access a range of elements using slicing
+print(fruit_list[1:4])  # prints ['grape', 'banana', 'orange']
+
+# Update an element at a specific index
+fruit_list[0] = "mango"
+
+# Update multiple elements using slicing
+fruit_list[1:3] = ["pear", "peach"]
+
+print(fruit_list)
+
+# Delete an element by index using del
+del fruit_list[0]   # removes "mango"
+
+# Remove an element by value using remove()
+fruit_list.remove("banana")
+
+# Remove and return the last element using pop()
+last_element = fruit_list.pop()
+
+print(fruit_list)
+print("Popped element:", last_element)
