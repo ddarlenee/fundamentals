@@ -1,0 +1,27 @@
+# Create a new dictionary to store country-city pairs
+country_city_dict = {}
+
+# Add country-city pairs to the dictionary
+country_city_dict['USA'] = 'New York'
+country_city_dict['Canada'] = 'Toronto'
+country_city_dict['Japan'] = 'Tokyo'
+
+print(country_city_dict) # {'USA': 'New York', 'Canada': 'Toronto', 'Japan': 'Tokyo'}
+
+# Access city by providing the country as a key
+print(country_city_dict['USA'])  # prints "New York"
+print(country_city_dict['Canada'])   # prints "Toronto"
+
+# Update the city for a country
+country_city_dict['USA'] = 'Los Angeles'
+
+print(country_city_dict) # {'USA': 'Los Angeles', 'Canada': 'Toronto', 'Japan': 'Tokyo'}
+
+# Delete a country-city pair using del
+del country_city_dict['Japan']
+
+# Remove and return the city associated with a country using pop()
+removed_city = country_city_dict.pop('Canada')
+
+print(country_city_dict) # {'USA': 'Los Angeles'}
+print("Removed city:", removed_city) # Removed city: Toronto
