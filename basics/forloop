@@ -1,5 +1,5 @@
 # for loop eg. calculate factorial 5!
-total = 0 # avoid using sum because it is a function in python 
+total = 1 # avoid using sum because it is a function in python 
 for i in range(5):
   total *= i # total = total * i
 print(total) 
