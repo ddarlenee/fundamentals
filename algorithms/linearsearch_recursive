@@ -1,0 +1,11 @@
+def linear_search(A, target, index):
+  if A[0] == target:
+    return index
+  elif len(A) == 1:
+    return -1
+  else:
+    return linear_search(A[1:], target, index+1)
+
+numlist = [0, 1, 4, 9, 13, 17]
+print(linear_search(numlist, 4, 0)) # found
+print(linear_search(numlist, 5, 0)) # not found / -1
