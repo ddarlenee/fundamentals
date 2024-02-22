@@ -1,0 +1,13 @@
+# bubble sort (non-optimised) O(n^2) - quadratic
+def bubble_sort(A): # works by repeatedly swapping the adjacent elements if they are in the wrong order
+    n = len(A)
+    for i in range(n):
+        for j in range(n-1):
+            #print(A[j], A[j+1])
+            if A[j] > A[j+1]:
+                A[j], A[j+1] = A[j+1], A[j]
+    return A
+
+data = [4, 7, 1, 5, 2, 8, 3]
+#data = [1, 2, 3, 5, 4, 7, 6]
+print(bubble_sort(data))
