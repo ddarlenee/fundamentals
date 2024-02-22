@@ -1,0 +1,20 @@
+# binary search (iterative)
+# precondition: data must be sorted
+
+def binary_search(A, target):
+  low = 0
+  high = len(A) - 1
+  while low <= high: # still items to search
+    mid = (low+high)//2 # start checking from the middle to eliminate the other half ie only need to check one half
+    if A[mid] == target: # found
+      return mid
+    elif target < A[mid]: # must be in the left half, throw away the right half
+      high = mid - 1
+    else: # target > A[mid], must be in the right half, throw away the left half
+      low = mid + 1
+  return -1 # not found
+
+# main
+data = [1, 4, 6, 9, 13]
+print(binary_search(data, 9)) # success
+print(binary_search(data, 5)) # failure
