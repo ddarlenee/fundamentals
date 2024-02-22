@@ -20,4 +20,4 @@ print('BYE'.lower()) # bye
 wordlist = conc_word.split() # ['hello', 'world']
 
 # remove whitespace
-print('    computing ') # 'computing'
+print('    computing '.strip()) #computing
