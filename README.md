@@ -1,5 +1,5 @@
 # Strengthening the Fundamentals
-Term 1 Assessment - Code for a collection of videos covering most of the topics below:
+Term 1 Assessment - Code for a collection of videos covering most of the topics below: (https://drive.google.com/drive/folders/1G7MibPo8lohHWTJ-p57k08jgU76saDf-?usp=drive_link)
 
 Basics
 - conditional statements (if, else, elif)
