@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Display Messages</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+  </head>
+  <body>
+    <h1>Display Messages</h1>
+    <form method="post">
+      Message: <input type="text" name="message">
+      <input type="submit" value="post">
+    </form>
+    {% if msg %}
+      {{ msg }}
+    {% endif %}
+    {% for post in posts %}
+      {{ post }}
+    {% endfor %}
+  </body>
+</html>
