@@ -1,0 +1,49 @@
+# Import modules
+import sqlite3
+
+# Connect to database (or create it if it does not exist)
+conn = sqlite3.connect('example.db')
+
+# Create cursor object to interact with the database
+cur = conn.cursor()
+
+# Create table
+cur.execute('''CREATE TABLE IF NOT EXISTS users
+               (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)''')
+
+# Insert data
+cur.execute("INSERT INTO users (name, age) VALUES ('Alice', 30)")
+cur.execute("INSERT INTO users (name, age) VALUES ('Bob', 25)")
+cur.execute("INSERT INTO users (name, age) VALUES ('Charlie', 22)")
+
+# Assuming the 'users' table already exists and has data
+# Update example: Update the age of Alice to 31
+cur.execute("UPDATE users SET age = ? WHERE name = ?", (31, 'Alice'))
+conn.commit()
+
+# Display updated data
+print("Updated data:")
+rows = cur.execute("SELECT * FROM users")
+for row in rows:
+    print(row)
+
+# Delete example: Delete the user named Bob
+cur.execute("DELETE FROM users WHERE name = ?", ('Bob',))
+conn.commit()
+
+# Display updated data
+print("Updated data:")
+rows = cur.execute("SELECT * FROM users")
+for row in rows:
+    print(row)
+
+# Commit changes to disk
+conn.commit()
+
+# Query data
+rows = cur.execute("SELECT * FROM users")
+for row in rows:
+    print(row)
+
+# Close connection
+conn.close()
